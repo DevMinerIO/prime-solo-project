@@ -20,14 +20,34 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 router.post('/register', (req, res, next) => {
   const username = req.body.username;
   const password = encryptLib.encryptPassword(req.body.password);
+  const firstName = req.body.first_name;
+  const lastName = req.body.last_name;
+  console.log('first name is!!!!!', firstName);
 
+  // adding new user into "user" table
   const queryText = `INSERT INTO "user" (username, password)
     VALUES ($1, $2) RETURNING id`;
   pool
     .query(queryText, [username, password])
-    .then(() => res.sendStatus(201))
     .catch((err) => {
       console.log('User registration failed: ', err);
+      res.sendStatus(500);
+    });
+  // When player first_name and last_name are equal set "id" 
+  // have to use WITH clause because Update cant directly take in Max();
+  const queryTextPlayer = `
+    WITH maxId(currentMax) as (
+    SELECT MAX(id) FROM "user")
+    UPDATE "player" 
+    SET "user_id" = maxId.currentMax
+    FROM maxId
+    WHERE UPPER("first_name") = UPPER($1) AND UPPER("last_name") = UPPER($2);`;
+  pool
+    // TODO maybe add this query above and add a .then so it avoids a potential timing issue?
+    .query(queryTextPlayer, [firstName, lastName])
+    .then(() => res.sendStatus(201))
+    .catch((err) => {
+      console.log('Failed at registration update player: ', err);
       res.sendStatus(500);
     });
 });
