@@ -20,6 +20,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import PlayerPage from '../Playerpage/PlayerPage';
+import GameStatsForm from '../GameStatsForm/GameStatsForm';
 
 import './App.css';
 
@@ -62,11 +63,11 @@ function App() {
             <PlayerPage />
           </ProtectedRoute>
           <ProtectedRoute
-          // MINER addGameStats form route from player view Component < AddStatsForm />
+          // MINER addGameStats form route from player view Component < GameStatsForm />
             exact
             path='/addGameStats'
           >
-      
+            < GameStatsForm />
           </ProtectedRoute>
 
           <ProtectedRoute
