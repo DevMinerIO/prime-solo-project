@@ -9,6 +9,8 @@ const passport = require('./strategies/user.strategy');
 
 // Route includes
 const userRouter = require('./routes/user.router');
+// Miner added player router
+const playerRouter = require('./routes/player.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -24,6 +26,8 @@ app.use(passport.session());
 /* Routes */
 // /api/user Handles user Authentication: login/log out, registration
 app.use('/api/user', userRouter);
+// Miner added player route
+app.use('/api/player', playerRouter);
 
 // Serve static files
 app.use(express.static('build'));
