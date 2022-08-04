@@ -61,6 +61,13 @@ function App() {
             <UserPage />
             <PlayerPage />
           </ProtectedRoute>
+          <ProtectedRoute
+          // MINER addGameStats form route from player view Component < AddStatsForm />
+            exact
+            path='/addGameStats'
+          >
+      
+          </ProtectedRoute>
 
           <ProtectedRoute
             // logged in shows InfoPage else shows LoginPage
