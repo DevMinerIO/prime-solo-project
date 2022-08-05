@@ -13,6 +13,7 @@ function Game({ currentGame}) {
     // Each Row: Opponent, Date, Points, Assists, Rebounds, Steals
     return ( 
         <tr>
+            <td>{currentGame.game_id}</td>
             <td>{currentGame.opponent_name}</td>
             {/* TODO FORMAT DATE PROPERLY */}
             <td> {currentGame.date}</td>
