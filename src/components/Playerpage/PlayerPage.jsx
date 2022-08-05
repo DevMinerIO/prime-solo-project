@@ -21,7 +21,15 @@ function PlayerPage() {
 
     // on load of user login, show player game stats 
     useEffect(() => {
-        dispatch({ type: 'FETCH_PLAYER_GAMES' });
+        // AM i allowed to dispatch 2 types in the same dispatch?
+        dispatch({
+            type: 'FETCH_PLAYER_GAMES'
+            // type: 'GET_LAST_GAME_ID'
+        });
+        // call to id reducer
+        // dispatch({
+        //     type: 'GET_LAST_GAME_ID'
+        // });
     }, []);
     // function to take you to addGameStats form. 
     const addGameStats = () => {
@@ -41,6 +49,7 @@ function PlayerPage() {
             <table>
                 <thead>
                     <tr>
+                        <th>Game Id</th>
                         <th>Opponent</th>
                         <th>Date</th>
                         <th>Points</th>

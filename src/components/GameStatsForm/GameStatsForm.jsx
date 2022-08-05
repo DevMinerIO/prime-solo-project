@@ -1,11 +1,19 @@
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from "react-redux";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSelector } from 'react-redux';
 
 
 function GameStatsForm() {
     // local states to hold inputs to send to the server on submit. 
     // const [newGame, setNewGame] = useState(0);
+    const lastGameId = useSelector((store) => store.getLastGameId);
+    // not sure if correct. Attempt 2 below
+    const playerId = useSelector((store) => store.playerStats[0].id)
+    const getTeam = useSelector((store) => store.playerStats[0].team_id);
+    const nextGameId = useSelector((store) => store.getLastGameId[0].id);
+
+
     const [points, setPoints] = useState('');
     const [assists, setAssists] = useState('');
     const [rebounds, setRebounds] = useState('');
@@ -17,12 +25,15 @@ function GameStatsForm() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
+        console.log('THIS IS the store for getLastId', lastGameId);
+        console.log('THIS IS getTeam from the store,', getTeam);
+
         dispatch({
             // not using game_id for now. making new game number from sql query
             //game_id: newGame,
             type: "ADD_STATS",
             payload: {
-                points: points, assists: assists,
+                playerId: playerId, nextGameId: nextGameId ,playerTeam: getTeam, points: points, assists: assists,
                 rebounds: rebounds, steals: steals
             }
         })
