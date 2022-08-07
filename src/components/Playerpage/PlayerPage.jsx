@@ -24,7 +24,6 @@ function PlayerPage() {
         // AM i allowed to dispatch 2 types in the same dispatch?
         dispatch({
             type: 'FETCH_PLAYER_GAMES'
-            // type: 'GET_LAST_GAME_ID'
         });
     }, []);
     // function to take you to addGameStats form. 

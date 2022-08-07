@@ -9,14 +9,12 @@ function* fetchUpdatedStats(action) {
             withCredentials: true,
         }
         // player router js needs to have the matching url. ${action.payload}
-        yield axios.put(`/api/players/update`, config);
-        console.log('action.payload is:', action.payload);
-        console.log('This is response.data for the update scores button:', action.payload);
+        yield axios.put(`/api/player/${action.payload.game_id}`, config);
         yield put({ type: 'SET_STATS_UPDATE', payload: action.payload });
 
     }
     catch (error) {
-        console.log(' Failed in fetchupdated stats put request failed', error);
+        console.log(' Failed in fetchUpdated stats put request failed', error);
     }
 }
 
