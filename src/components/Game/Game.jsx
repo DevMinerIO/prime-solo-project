@@ -36,26 +36,28 @@ function Game({ currentGame }) {
             rebounds: rebounds,
             steals: steals
         });
-        // TODO get page to dynamically update. 
+        // ERROR if you don't have show form toggle off after update of scores!
+        setShowForm(!showForm);
     }
-    //NOT CURRENTLY USING. direct put request above, rather then chaining.
-    // const submitUpdatedStats = () => {
-    //     dispatch({
-    //         type: 'UPDATE_STATS',
-    //         // currentGame is the prop that was passed in. keeping each game_id
-    //         payload: {
-    //             game_id: currentGame.game_id,
-    //             // this is the player id
-    //             id: currentGame.id,
-    //             points: points,
-    //             assists: assists,
-    //             rebounds: rebounds,
-    //             steals: steals
-    //         }
-    //     })
-    // }
-    // closes the form after submission
-    setShowForm(!showForm);
+
+        //NOT CURRENTLY USING. direct put request above, rather then chaining
+        // const submitUpdatedStats = () => {
+        //     dispatch({
+        //         type: 'UPDATE_STATS',
+        //         // currentGame is the prop that was passed in. keeping each game_id
+        //         payload: {
+        //             game_id: currentGame.game_id,
+        //             // this is the player id
+        //             id: currentGame.id,
+        //             points: points,
+        //             assists: assists,
+        //             rebounds: rebounds,
+        //             steals: steals
+        //         }
+        //     })
+        // }
+        // closes the form after submission
+        
 
     // Each Row: Opponent, Date, Points, Assists, Rebounds, Steals
     // ternary to either update on "update stats" click or read the game stats. 
