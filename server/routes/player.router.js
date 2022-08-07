@@ -54,7 +54,7 @@ router.get('/lastId/:teamId/:playerID', (req, res) => {
  */
 router.post('/', (req, res) => {
     // POST route code here
-    console.log('req.body is(Object expected): ', req.body);
+    console.log('req.body is: ', req.body);
     const stats = req.body
 
     const queryText = `INSERT INTO "player_stats" (points, assists, rebounds, steals, game_id, player_id )

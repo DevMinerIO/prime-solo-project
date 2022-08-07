@@ -5,6 +5,7 @@ import userSaga from './user.saga';
 import playerSaga from './playerStats.saga';
 import playerStatsSaga from './setPlayerStats.saga';
 import lastGameIdSaga from './lastGameId.saga'
+import currentGameIdSaga from './currentGameId.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -20,7 +21,8 @@ export default function* rootSaga() {
     userSaga(),
     playerSaga(),
     playerStatsSaga(),
-    lastGameIdSaga()
+    lastGameIdSaga(),
+    currentGameIdSaga()
 
 
   ]);

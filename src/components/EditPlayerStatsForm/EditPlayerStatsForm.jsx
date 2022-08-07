@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useSelector } from 'react-redux';
 
 
-function GameStatsForm() {
+function EditPlayerStats() {
     const history = useHistory();
     // local states to hold inputs to send to the server on submit. 
     // const [newGame, setNewGame] = useState(0);
@@ -32,9 +32,10 @@ function GameStatsForm() {
         dispatch({
             // not using game_id for now. making new game number from sql query
             //game_id: newGame,
-            type: "ADD_STATS",
+            type: "UPDATE_STATS",
             payload: {
-                playerId: playerId, nextGameId: nextGameId, playerTeam: getTeam, points: points, assists: assists,
+                //TODO add reducer to store the game_id being clicked on.  
+                currentGame: 0, playerId: playerId, points: points, assists: assists,
                 rebounds: rebounds, steals: steals
             }
         })
@@ -46,31 +47,29 @@ function GameStatsForm() {
 
         // reload the page we are about to push to, so new data shows to the DOM
         dispatch({
-            type: 'FETCH_PLAYER_GAMES'
+            type: ''
         });
         // return to player stats page after the player inputs. 
         history.push('/user');
     }
     return (
-            <form className='game-stats-form' onSubmit={handleSubmit}>
-                <label>points</label>
-                <input type="number" value={points}
-                    onChange={(event) => setPoints(event.target.value)} />
-                <label>Assists</label>
-                <input type="number" value={assists}
-                    onChange={(event) => setAssists(event.target.value)} />
-                <label>Rebounds</label>
-                <input type="number" value={rebounds}
-                    onChange={(event) => setRebounds(event.target.value)} />
-                <label>Steals</label>
-                <input type="number" value={steals}
-                    onChange={(event) => setSteals(event.target.value)} />
-                <button type='submit'>SUBMIT SCORES</button>
-            </form>
+        <form className='game-stats-form' onSubmit={handleSubmit}>
+            <label>points</label>
+            <input type="number" value={points}
+                onChange={(event) => setPoints(event.target.value)} />
+            <label>Assists</label>
+            <input type="number" value={assists}
+                onChange={(event) => setAssists(event.target.value)} />
+            <label>Rebounds</label>
+            <input type="number" value={rebounds}
+                onChange={(event) => setRebounds(event.target.value)} />
+            <label>Steals</label>
+            <input type="number" value={steals}
+                onChange={(event) => setSteals(event.target.value)} />
+            <button type='submit'>Update Scores</button>
+        </form>
     )
-
-
 
 }
 
-export default GameStatsForm;
+export default EditPlayerStats;
