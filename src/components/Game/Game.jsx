@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch } from "react-redux";
 import { useSelector } from 'react-redux';
+import axios from 'axios';
+
 
 // Basic functional component structure for React with default state
 // value setup. When making a new component be sure to replace the
@@ -16,7 +18,6 @@ function Game({ currentGame }) {
     // this useState will hide the update form unless clicked. 
     const [showForm, setShowForm] = useState(false);
     const dispatch = useDispatch();
-    const store = useSelector((store) => store);
 
     // update stats function. Takes in entire object instead of just game_id. 
     const updatePlayerStats = () => {
@@ -24,23 +25,37 @@ function Game({ currentGame }) {
         setShowForm(!showForm);
         console.log('Here is the current game properties:', currentGame);
     }
-    const submitUpdatedStats = () => {
 
-        dispatch({
-            type: 'UPDATE_STATS',
-            // currentGame is the prop that was passed in. keeping each game_id
-            payload: {
-                game_id: currentGame.game_id,
-                points: points,
-                assists: assists,
-                rebounds: rebounds,
-                steals: steals
-            }
-        })
-        // closes the form after submission
-        setShowForm(!showForm);
-        
+    const updateScores = (event) => {
+        axios.put(`/api/player/${currentGame.id}/${currentGame.game_id}`, {
+            game_id: currentGame.game_id,
+            // this is the player id
+            playerId: currentGame.id,
+            points: points,
+            assists: assists,
+            rebounds: rebounds,
+            steals: steals
+        });
+        // TODO get page to dynamically update. 
     }
+    //NOT CURRENTLY USING. direct put request above, rather then chaining.
+    // const submitUpdatedStats = () => {
+    //     dispatch({
+    //         type: 'UPDATE_STATS',
+    //         // currentGame is the prop that was passed in. keeping each game_id
+    //         payload: {
+    //             game_id: currentGame.game_id,
+    //             // this is the player id
+    //             id: currentGame.id,
+    //             points: points,
+    //             assists: assists,
+    //             rebounds: rebounds,
+    //             steals: steals
+    //         }
+    //     })
+    // }
+    // closes the form after submission
+    setShowForm(!showForm);
 
     // Each Row: Opponent, Date, Points, Assists, Rebounds, Steals
     // ternary to either update on "update stats" click or read the game stats. 
@@ -65,7 +80,7 @@ function Game({ currentGame }) {
                     value={steals} onChange={(event) => setSteals(event.target.value)}>
                 </input></td>
                 {/* // button to submit the updated scores*/}
-                <td><button type='button' className='update-button' onClick={submitUpdatedStats}>COMPLETE</button></td>
+                <td><button type='button' className='update-button' onClick={updateScores}>COMPLETE</button></td>
             </tr>
             :
             <tr>
@@ -82,5 +97,6 @@ function Game({ currentGame }) {
             </tr>
     );
 }
+
 
 export default Game;
