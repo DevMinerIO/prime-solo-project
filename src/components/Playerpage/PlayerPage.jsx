@@ -26,10 +26,6 @@ function PlayerPage() {
             type: 'FETCH_PLAYER_GAMES'
             // type: 'GET_LAST_GAME_ID'
         });
-        // call to id reducer
-        // dispatch({
-        //     type: 'GET_LAST_GAME_ID'
-        // });
     }, []);
     // function to take you to addGameStats form. 
     const addGameStats = () => {

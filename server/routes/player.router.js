@@ -54,7 +54,7 @@ router.get('/lastId/:teamId/:playerID', (req, res) => {
  */
 router.post('/', (req, res) => {
     // POST route code here
-    console.log('req.body is(Object expected): ', req.body);
+    console.log('req.body is: ', req.body);
     const stats = req.body
 
     const queryText = `INSERT INTO "player_stats" (points, assists, rebounds, steals, game_id, player_id )
@@ -70,5 +70,22 @@ router.post('/', (req, res) => {
 });
 
 // TODO- ADD PUT to update scores
+// router.put('/update', (req, res) => {
+//     const newStats = req.body;
+//     const queryText = `UPDATE player_stats 
+//     SET points = $1, assists = $2, rebounds =$3,
+//     steals = $4
+//     WHERE game_id = $5 AND id = $6;`;
+//     pool.query(queryText, [newStats.points, newStats.assists,
+//     newStats.rebounds, newStats.steals, newStats.game_id, newStats.id])
+//         .then((result) => {
+//             res.sendStatus(200);
+//         })
+//         .catch((error) => {
+//             console.log(`Error making database query ${sqlText}`, error);
+//             res.sendStatus(500);
+//         });
+
+// })
 
 module.exports = router;
