@@ -56,16 +56,16 @@ function Game({ currentGame }) {
                     value={points} onChange={(event) => setPoints(event.target.value)}>
                 </input></td>
                 <td><input type='number' className='update-stats' placeholder='ASSISTS'
-                    value={assists} onChange={(event) => setPoints(event.target.value)}>
+                    value={assists} onChange={(event) => setAssists(event.target.value)}>
                 </input></td>
                 <td><input type='number' className='update-stats' placeholder='REBOUNDS'
-                    value={rebounds} onChange={(event) => setPoints(event.target.value)}>
+                    value={rebounds} onChange={(event) => setRebounds(event.target.value)}>
                 </input></td>
                 <td><input type='number' className='update-stats' placeholder='STEALS'
-                    value={steals} onChange={(event) => setPoints(event.target.value)}>
+                    value={steals} onChange={(event) => setSteals(event.target.value)}>
                 </input></td>
                 {/* // button to submit the updated scores*/}
-                <td><button type='button' className='update-button' onClick={submitUpdatedStats}>Submit Updates</button></td>
+                <td><button type='button' className='update-button' onClick={submitUpdatedStats}>COMPLETE</button></td>
             </tr>
             :
             <tr>
@@ -78,7 +78,7 @@ function Game({ currentGame }) {
                 <td> {currentGame.rebounds}</td>
                 <td> {currentGame.steals}</td>
                 {/* // button to update the scores for the current game being clicked on */}
-                <td><button type='button' className='update-button' onClick={updatePlayerStats}>COMPLETE</button></td>
+                <td><button type='button' className='update-button' onClick={updatePlayerStats}>UPDATE STATS</button></td>
             </tr>
     );
 }

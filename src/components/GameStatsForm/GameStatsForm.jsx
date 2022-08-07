@@ -8,11 +8,10 @@ function GameStatsForm() {
     const history = useHistory();
     // local states to hold inputs to send to the server on submit. 
     // const [newGame, setNewGame] = useState(0);
-    const lastGameId = useSelector((store) => store.getLastGameId);
-    // not sure if correct. Attempt 2 below
     const playerId = useSelector((store) => store.playerStats[0].id)
     const getTeam = useSelector((store) => store.playerStats[0].team_id);
     const nextGameId = useSelector((store) => store.getLastGameId[0].id);
+    const everything = useSelector((store) => store.playerStats);
 
 
     const [points, setPoints] = useState('');
@@ -26,8 +25,9 @@ function GameStatsForm() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        console.log('THIS IS the store for getLastId', lastGameId);
+        console.log('everything from playerStats store', everything);
         console.log('THIS IS getTeam from the store,', getTeam);
+        console.log('NEXT GAME ID IS:', nextGameId);
 
         dispatch({
             // not using game_id for now. making new game number from sql query

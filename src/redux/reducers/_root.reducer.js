@@ -4,7 +4,7 @@ import user from './user.reducer';
 import playerStats from './playerStats.reducer';
 import addStats from './addStats.reducer';
 import getLastGameId from './lastGameId.reducer';
-import currentGameId from './currentGameId.reducer';
+import updatedStats from './updatedStats.reducer';
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
 // This is imported in index.js as rootSaga
@@ -17,7 +17,7 @@ const rootReducer = combineReducers({
   playerStats,
   addStats,
   getLastGameId,
-  currentGameId
+  updatedStats
 });
 
 export default rootReducer;

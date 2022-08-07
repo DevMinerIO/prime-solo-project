@@ -8,14 +8,15 @@ function* fetchUpdatedStats(action) {
             headers: { 'Content-Type': 'application/json' },
             withCredentials: true,
         }
-        // player router js needs to have the matching url. 
-        const response = yield axios.get(`/api/players/${action.payload.playerId}`, config);
-        console.log('This is response.data for get lastId', response.data);
-        yield put({ type: 'SET_CURRENT_GAME_ID', payload: response.data });
+        // player router js needs to have the matching url. ${action.payload}
+        yield axios.put(`/api/players/update`, config);
+        console.log('action.payload is:', action.payload);
+        console.log('This is response.data for the update scores button:', action.payload);
+        yield put({ type: 'SET_STATS_UPDATE', payload: action.payload });
 
     }
     catch (error) {
-        console.log(' Failed in fetchPlayerGames get request failed', error);
+        console.log(' Failed in fetchupdated stats put request failed', error);
     }
 }
 
