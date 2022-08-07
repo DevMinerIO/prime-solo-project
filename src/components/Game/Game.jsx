@@ -29,7 +29,13 @@ function Game({ currentGame }) {
         dispatch({
             type: 'UPDATE_STATS',
             // currentGame is the prop that was passed in. keeping each game_id
-            payload: {game_id: currentGame.game_id,}
+            payload: {
+                game_id: currentGame.game_id,
+                points: points,
+                assists: assists,
+                rebounds: rebounds,
+                steals: steals
+            }
         })
         // closes the form after submission
         setShowForm(!showForm);
@@ -72,7 +78,7 @@ function Game({ currentGame }) {
                 <td> {currentGame.rebounds}</td>
                 <td> {currentGame.steals}</td>
                 {/* // button to update the scores for the current game being clicked on */}
-                <td><button type='button' className='update-button' onClick={updatePlayerStats}>UPDATE STATS</button></td>
+                <td><button type='button' className='update-button' onClick={updatePlayerStats}>COMPLETE</button></td>
             </tr>
     );
 }

@@ -2,7 +2,7 @@ import axios from 'axios';
 import { put, takeEvery, takeLatest } from 'redux-saga/effects';
 
 // generator function
-function* fetchCurrentGameId(action) {
+function* fetchUpdatedStats(action) {
     try {
         const config = {
             headers: { 'Content-Type': 'application/json' },
@@ -19,8 +19,8 @@ function* fetchCurrentGameId(action) {
     }
 }
 
-function* currentGameIdSaga() {
-    yield takeLatest('UPDATE_STATS', fetchCurrentGameId)
+function* updatedStatsSaga() {
+    yield takeLatest('UPDATE_STATS', fetchUpdatedStats)
 }
 
-export default currentGameIdSaga;
+export default updatedStatsSaga;
