@@ -6,7 +6,8 @@ import { useHistory } from 'react-router-dom';
 
 function TeamView() {
 
-    const myTeam = useSelector((store) => store.playerStats);
+    const teamId = useSelector((store) => store.playerStats);
+    const myTeam = useSelector((store) => store.teamStats)
     const [heading, setHeading] = useState('THIS SHOULD SHOULD NEVER SHOW!');
     const history = useHistory();
 
@@ -14,9 +15,10 @@ function TeamView() {
         history.push('/user')
     }
 
-    console.log('Store player_stats is:', myTeam[0].team_id);
-    const printTeam = (myTeam) => {
-        switch (myTeam) {
+    console.log('Store teamStats id is:', teamId[0].team_id);
+    console.log('myTeam is:', myTeam);
+    const printTeam = (teamId) => {
+        switch (teamId) {
             case 1:
                 setHeading('9th Grade');
                 break;
@@ -35,7 +37,7 @@ function TeamView() {
     }
 
     useEffect(() => {
-        printTeam(myTeam[0].team_id);
+        printTeam(teamId[0].team_id);
     }, []);
     console.log('Your team is:', heading);
 

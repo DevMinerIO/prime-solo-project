@@ -48,6 +48,26 @@ router.get('/lastId/:teamId/:playerID', (req, res) => {
         });
 });
 
+router.get('/team/:teamId', (req, res) => {
+    const teamId = req.params.teamId;
+    const queryText = `SELECT games.opponent_name, player.last_name,
+    player.jersey_number, points, assists, rebounds, steals
+    FROM "player_stats"
+    JOIN games
+    ON games.id = player_stats.game_id
+    JOIN "player"
+    ON player.id = player_stats.id
+    WHERE player.team_id = $1
+    ORDER BY games.date, points DESC;`;
+    pool
+        .query(queryText, [teamId])
+        .then((results) => res.send(results.rows))
+        .catch((error) => {
+            console.log('Error GETing TEAM Stats in Player router /team/:teamId', error);
+            res.sendStatus(500);
+        });
+}) 
+
 
 /**
  * POST route template
