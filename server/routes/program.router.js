@@ -9,7 +9,8 @@ router.get('/', (req, res) => {
     const queryText = `SELECT team_id, player.last_name, player.jersey_number,  AVG(points) AS "avg_points", AVG(assists) AS "avg_assists", AVG(rebounds) AS "avg_rebounds", AVG(steals) AS "avg_steals" FROM player
     JOIN player_stats
     ON player.id = player_stats.player_id
-    GROUP BY player.id;`;
+    GROUP BY player.id
+    ORDER BY avg_points DESC;`;
     pool
         .query(queryText)
         .then((results) => res.send(results.rows))
