@@ -4,7 +4,7 @@ import TeamGame from '../TeamGame/TeamGame';
 import { useHistory } from 'react-router-dom';
 
 
-function TeamView() {
+function ProgramView() {
 
     // TODO change store to the correct store that still needs to be made. 
     const myTeam = useSelector((store) => store.playerStats);
@@ -43,4 +43,4 @@ function TeamView() {
     );
 }
 
-export default TeamView;
+export default ProgramView;
