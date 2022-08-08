@@ -36,6 +36,9 @@ function Game({ currentGame }) {
             rebounds: rebounds,
             steals: steals
         });
+        dispatch({
+            type: 'FETCH_PLAYER_GAMES'
+        });
         // ERROR if you don't have show form toggle off after update of scores!
         setShowForm(!showForm);
     }
