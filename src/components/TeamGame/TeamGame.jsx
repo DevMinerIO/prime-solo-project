@@ -3,10 +3,6 @@ import { useDispatch } from "react-redux";
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 
-
-// Basic functional component structure for React with default state
-// value setup. When making a new component be sure to replace the
-// component name TemplateFunction with the name for the new component.
 function TeamGame({ currentTeamGame }) {
 
 
