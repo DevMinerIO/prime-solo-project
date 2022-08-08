@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Game from '../Game/Game';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
+import ScheduledGame from '../ScheduledGame/ScheduledGame'
+
 
 
 
@@ -52,7 +53,7 @@ function CoachView() {
                 <tbody>
                     {teamSchedule.map((game, i) => {
                         return (
-                            <ScheduledGame key={i} currentGame={game} />
+                            <ScheduledGame key={i} game={game} />
                         )
                     })}
                 </tbody>
