@@ -13,6 +13,8 @@ const userRouter = require('./routes/user.router');
 const playerRouter = require('./routes/player.router');
 // router for program leaderboard
 const programRouter = require('./routes/program.router');
+// router for coachesView to add and read games from "games" table
+const scheduleRouter = require('./routes/games.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -32,6 +34,8 @@ app.use('/api/user', userRouter);
 app.use('/api/player', playerRouter);
 // for the program leaderboard. In ProgramView
 app.use('/api/program', programRouter);
+// for games/ schedule table
+app.use('/api/games', scheduleRouter);
 
 // Serve static files
 app.use(express.static('build'));

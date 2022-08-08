@@ -23,6 +23,7 @@ import PlayerPage from '../Playerpage/PlayerPage';
 import GameStatsForm from '../GameStatsForm/GameStatsForm';
 import TeamView from '../TeamView/TeamView';
 import ProgramView from '../ProgramView/ProgramView';
+import CoachView from '../CoachView/CoachView';
 import './App.css';
 
 function App() {
@@ -62,6 +63,8 @@ function App() {
           >
             <UserPage />
             <PlayerPage />
+            {/* TODO Coaches View only renders when auth level is 2 */}
+            <CoachView />
           </ProtectedRoute>
           <ProtectedRoute
             exact
