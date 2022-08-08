@@ -1,13 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import TeamGame from '../TeamGame/TeamGame';
+import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import ProgramStats from '../ProgramStats/ProgramStats';
 
 function ProgramView() {
+    const dispatch = useDispatch();
+
+
+    useEffect(() => {
+        // AM i allowed to dispatch 2 types in the same dispatch?
+        dispatch({
+            type: 'FETCH_PROGRAM_STATS'
+        });
+    }, []);
 
     // TODO change store to the correct store that still needs to be made. 
-    const myTeam = useSelector((store) => store.playerStats);
+    const myTeam = useSelector((store) => store.programStats);
     const history = useHistory();
 
     const HandleBackButton = () => {

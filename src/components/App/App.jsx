@@ -22,8 +22,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import PlayerPage from '../Playerpage/PlayerPage';
 import GameStatsForm from '../GameStatsForm/GameStatsForm';
 import TeamView from '../TeamView/TeamView';
-import ProgramView from '../ProgramPage/ProgramView';
-
+import ProgramView from '../ProgramView/ProgramView';
 import './App.css';
 
 function App() {
