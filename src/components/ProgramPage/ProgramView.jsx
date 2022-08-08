@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import TeamGame from '../TeamGame/TeamGame';
 import { useHistory } from 'react-router-dom';
-
+import ProgramStats from '../ProgramStats/ProgramStats';
 
 function ProgramView() {
 

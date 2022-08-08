@@ -11,6 +11,8 @@ const passport = require('./strategies/user.strategy');
 const userRouter = require('./routes/user.router');
 // Miner added player router
 const playerRouter = require('./routes/player.router');
+// router for program leaderboard
+const programRouter = require('./routes/program.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -28,6 +30,8 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 // Miner added player route
 app.use('/api/player', playerRouter);
+// for the program leaderboard. In ProgramView
+app.use('/api/program', programRouter);
 
 // Serve static files
 app.use(express.static('build'));
