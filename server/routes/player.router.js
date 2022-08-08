@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
     // GET route code here
     console.log('req.user.id', req.user.id);
     const queryText = `SELECT player.team_id, player.id, player_stats.game_id, games.opponent_name, games.date,
-    points, assists, rebounds, steals
+    points, assists, rebounds, steals, jersey_number, last_name
     FROM "player_stats"
     JOIN games
     ON games.id = player_stats.game_id

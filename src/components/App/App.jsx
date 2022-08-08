@@ -21,6 +21,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import PlayerPage from '../Playerpage/PlayerPage';
 import GameStatsForm from '../GameStatsForm/GameStatsForm';
+import TeamView from '../TeamView/TeamView';
 
 import './App.css';
 
@@ -61,6 +62,12 @@ function App() {
           >
             <UserPage />
             <PlayerPage />
+          </ProtectedRoute>
+          <ProtectedRoute
+            exact
+            path='/team'
+          >
+            <TeamView />
           </ProtectedRoute>
           <ProtectedRoute
           // MINER addGameStats form route from player view Component < GameStatsForm />
