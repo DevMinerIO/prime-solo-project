@@ -9,12 +9,20 @@ function* fetchPlayerGames() {
             withCredentials: true,
         }
         const response = yield axios.get('/api/player', config);
-        console.log('This is response.data', response.data);
+        console.log('This is response.data for the all of the users games', response.data);
+        console.log('users team id is:', response.data[0].team_id);
         yield put({ type: 'GET_PLAYER_GAMES', payload: response.data });
         yield put({
             type: 'GET_LAST_GAME_ID', payload: {
                 teamId: response.data[0].team_id,
                 playerId: response.data[0].id
+            }
+        });
+        //get team_id for team page to display team stats for each player. 
+        yield put({
+            type: 'FETCH_TEAM_STATS', payload: {
+                // this is the users team
+                teamId: response.data[0].team_id
             }
         })
 
