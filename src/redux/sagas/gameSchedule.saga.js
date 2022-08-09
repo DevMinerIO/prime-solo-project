@@ -29,11 +29,27 @@ function* setGameSchedule(action) {
         console.log(' Failed in setGameSchedule post request failed', error);
     }
 }
+function* removeGame(action) {
+    console.log('this is the game we are going to delete!', action.payload);
+    try {
+        const config = {
+            headers: { 'Content-Type': 'application/json' },
+            withCredentials: true,
+        };
+        yield axios.delete(`/api/games/${action.payload}`, config)
+    }
+    catch (error) {
+        console.log('game was not able to be deleted', error);
+    }
+
+
+}
 
 
 function* scheduleSaga() {
     yield takeLatest('FETCH_SCHEDULE', fetchGameSchedule);
     yield takeLatest('ADD_NEW_GAME', setGameSchedule);
+    yield takeEvery('REMOVE_GAME', removeGame);
 }
 
 export default scheduleSaga;
