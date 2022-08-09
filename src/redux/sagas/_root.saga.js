@@ -25,7 +25,7 @@ export default function* rootSaga() {
     lastGameIdSaga(),
     updatedStatsSaga(),
     programSaga(),
-    scheduleSaga
+    scheduleSaga()
 
 
   ]);

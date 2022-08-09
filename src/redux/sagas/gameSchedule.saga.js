@@ -10,8 +10,8 @@ function* fetchGameSchedule() {
         }
         // const response = yield axios.get(`/api/games/${action.payload.teamId}`, config);
         const response = yield axios.get(`/api/games`, config);
+        yield console.log('This is response.data when trying to get team_id', response.data);
         yield put({ type: 'GET_GAME_SCHEDULE', payload: response.data });
-        console.log('This is response.data when trying to get team_id', response.data);
 
     }
     catch (error) {
@@ -21,7 +21,7 @@ function* fetchGameSchedule() {
 
 
 function* scheduleSaga() {
-    yield takeEvery('FETCH_SCHEDULE', fetchGameSchedule)
+    yield takeLatest('FETCH_SCHEDULE', fetchGameSchedule)
 }
 
 export default scheduleSaga;
