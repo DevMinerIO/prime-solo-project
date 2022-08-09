@@ -23,6 +23,7 @@ import PlayerPage from '../Playerpage/PlayerPage';
 import GameStatsForm from '../GameStatsForm/GameStatsForm';
 import TeamView from '../TeamView/TeamView';
 import ProgramView from '../ProgramView/ProgramView';
+import CoachView from '../CoachView/CoachView';
 import './App.css';
 
 function App() {
@@ -59,9 +60,13 @@ function App() {
             // logged in shows UserPage else shows LoginPage
             exact
             path="/user"
-          >
+          > 
             <UserPage />
-            <PlayerPage />
+            {user.access_level < 2 ?
+              <PlayerPage />
+              :
+              < CoachView />
+            }
           </ProtectedRoute>
           <ProtectedRoute
             exact

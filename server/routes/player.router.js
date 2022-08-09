@@ -18,8 +18,7 @@ router.get('/', (req, res) => {
     ON games.id = player_stats.game_id
     JOIN "player"
     ON player.id = player_stats.player_id
-    WHERE player.user_id = $1
-    ORDER BY date;`;
+    WHERE player.user_id = $1;`;
     pool
         .query(queryText, [req.user.id])
         .then((results) => res.send(results.rows))
