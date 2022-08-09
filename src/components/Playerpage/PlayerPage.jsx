@@ -13,7 +13,6 @@ function PlayerPage() {
     // Using hooks we're creating local state for a "heading" variable with
     // a default value of 'Functional Component'
     const dispatch = useDispatch();
-    const user = useSelector((store) => store.user);
     const store = useSelector((store) => store);
     const [heading, setHeading] = useState('PLAYER NAME HERE');
     const history = useHistory();

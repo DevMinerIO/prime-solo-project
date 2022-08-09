@@ -1,4 +1,4 @@
-const gameSchedule = (state = [{}], action) => {
+const gameSchedule = (state = [], action) => {
     switch (action.type) {
         case 'GET_GAME_SCHEDULE':
             return action.payload;
