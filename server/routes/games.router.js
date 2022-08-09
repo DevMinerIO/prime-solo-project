@@ -39,7 +39,20 @@ router.get('/', (req, res) => {
  * POST route for adding game to "games" table
  */
 router.post('/', (req, res) => {
-    // POST route code here
+    console.log('req.body is: ', req.body);
+    const newGame = req.body;
+    const queryText = `INSERT INTO "games" (team_id, opponent_name, date, points_for, 
+        points_against, outcome)
+    VALUES($1,$2,$3,$4,$5,$6);`;
+    pool.query(queryText, [newGame.team_id, newGame.opponent_name, newGame.date,
+    newGame.points_for, newGame.points_against, newGame.outcome])
+        .then((result) => {
+            res.sendStatus(201);
+        }).catch((error) => {
+            console.log('AY! error POSTing NEW GAME to db in "games" router', error);
+            res.sendStatus(500)
+        })
+
 });
 
 module.exports = router;
