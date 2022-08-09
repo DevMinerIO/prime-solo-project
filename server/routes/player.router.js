@@ -49,16 +49,17 @@ router.get('/lastId/:teamId/:playerID', (req, res) => {
 });
 
 router.get('/team/:teamId', (req, res) => {
-    const teamId = req.params.teamId;
-    const queryText = `SELECT games.opponent_name, player.last_name,
-    player.jersey_number, points, assists, rebounds, steals
-    FROM "player_stats"
+    const teamId = Number(req.params.teamId);
+    console.log('team id in /team/:teamId is:', teamId);
+    const queryText = `SELECT player.first_name, player.last_name,player.jersey_number,
+    games.opponent_name, points, assists, rebounds, steals
+    FROM player_stats
     JOIN games
     ON games.id = player_stats.game_id
-    JOIN "player"
-    ON player.id = player_stats.id
+    JOIN player
+    ON player.id = player_stats.player_id
     WHERE player.team_id = $1
-    ORDER BY games.date, points DESC;`;
+    ORDER BY game_id;`;
     pool
         .query(queryText, [teamId])
         .then((results) => res.send(results.rows))
