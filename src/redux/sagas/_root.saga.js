@@ -23,7 +23,7 @@ export default function* rootSaga() {
     playerStatsSaga(),
     lastGameIdSaga(),
     updatedStatsSaga(),
-    teamSaga
+    teamSaga()
 
 
   ]);

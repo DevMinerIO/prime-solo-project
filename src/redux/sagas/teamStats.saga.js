@@ -2,7 +2,7 @@ import axios from 'axios';
 import { put, takeEvery, takeLatest } from 'redux-saga/effects';
 
 // generator function
-function* fetchTeamStats() {
+function* fetchTeamStats(action) {
     try {
         const config = {
             headers: { 'Content-Type': 'application/json' },
