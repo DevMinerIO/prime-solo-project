@@ -8,12 +8,10 @@ function ScheduledGame({ game }) {
     return (
         <tr>
             <td>{game.opponent_name}</td>
-            <td>{game.last_name}</td>
-            <td> {game.jersey_number}</td>
-            <td> {game.points}</td>
-            <td> {game.assists}</td>
-            <td> {game.rebounds}</td>
-            <td> {game.steals}</td>
+            <td>{game.date}</td>
+            <td> {game.points_for}</td>
+            <td> {game.points_against}</td>
+            <td> {game.outcome}</td>
         </tr>
     );
 }
