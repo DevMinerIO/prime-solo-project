@@ -25,6 +25,7 @@ function* setGameSchedule(action) {
             withCredentials: true,
         }
         yield axios.post('/api/games', action.payload, config);
+        yield put({ type: 'FETCH_SCHEDULE' })
     } catch (error) {
         console.log(' Failed in setGameSchedule post request failed', error);
     }
@@ -37,6 +38,7 @@ function* removeGame(action) {
             withCredentials: true,
         };
         yield axios.delete(`/api/games/${action.payload}`, config)
+        yield put({ type: 'FETCH_SCHEDULE' })
     }
     catch (error) {
         console.log('game was not able to be deleted', error);

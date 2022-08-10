@@ -13,9 +13,6 @@ function ScheduledGame({ game }) {
             type: "REMOVE_GAME",
             payload: game.id
         })
-            dispatch({
-                type: 'FETCH_SCHEDULE'
-            })
     };
 
     return (
