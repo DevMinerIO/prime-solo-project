@@ -58,7 +58,7 @@ function TeamView() {
                     </tr>
                 </thead>
                 <tbody>
-                    {myTeam.map((game, i) => {
+                    {myTeam?.map((game, i) => {
                         return (
                             <TeamGame key={i} currentTeamGame={game} />
                         )

@@ -49,7 +49,6 @@ function CoachView() {
                     pointsFor, points_against: pointsAgainst,outcome: outcome
             }
         })
-
         // after submit set inputs back to blank
         setOpponent('');
         setDate('');
@@ -59,11 +58,7 @@ function CoachView() {
         setOutcome('');
         // hide form after hitting submit
         setShowForm(!showForm);
-
         // re-render page with new info
-        dispatch({
-            type: 'FETCH_SCHEDULE'
-        });
     }
 
     return (
@@ -86,7 +81,7 @@ function CoachView() {
                         </tr>
                     </thead>
                     <tbody>
-                        {teamSchedule.map((game, i) => {
+                        {teamSchedule?.map((game, i) => {
                             return (
                                 <ScheduledGame key={i} game={game} />
                             )
@@ -115,7 +110,7 @@ function CoachView() {
                         </tr>
                     </thead>
                     <tbody>
-                        {teamSchedule.map((game, i) => {
+                        {teamSchedule?.map((game, i) => {
                             return (
                                 <ScheduledGame key={i} game={game} />
                             )

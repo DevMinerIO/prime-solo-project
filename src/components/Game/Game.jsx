@@ -26,6 +26,7 @@ function Game({ currentGame }) {
         console.log('Here is the current game properties:', currentGame);
     }
 
+    // TODO move axios.put to the saga. 
     const updateScores = (event) => {
         axios.put(`/api/player/${currentGame.id}/${currentGame.game_id}`, {
             game_id: currentGame.game_id,

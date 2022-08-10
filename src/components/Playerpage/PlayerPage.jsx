@@ -53,7 +53,7 @@ function PlayerPage() {
                     </tr>
                 </thead>
                 <tbody>
-                {store.playerStats.map((game, i) => {
+                {store.playerStats?.map((game, i) => {
                     return (
                         <Game key={i} currentGame={game} />
                     )

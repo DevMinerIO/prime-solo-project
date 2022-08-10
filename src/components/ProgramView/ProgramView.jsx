@@ -39,7 +39,7 @@ function ProgramView() {
                     </tr>
                 </thead>
                 <tbody>
-                    {myTeam.map((game, i) => {
+                    {myTeam?.map((game, i) => {
                         return (
                             <ProgramStats key={i} currentStats={game} />
                         )
