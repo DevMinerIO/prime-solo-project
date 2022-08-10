@@ -92,19 +92,21 @@ router.post('/', (req, res) => {
 });
 
 // TODO- ADD PUT to update scores
-router.put('/:playerId/:gameId', (req, res) => {
+router.put('/:playerId', (req, res) => {
     const newStats = req.body;
+    const playerId = req.params.playerId;
     console.log('req.body in update is:', newStats);
     const queryText = `UPDATE player_stats 
     SET points = $1, assists = $2, rebounds =$3,
     steals = $4
     WHERE game_id = $5 AND player_id = $6;`;
-    pool.query(queryText, [newStats.points, newStats.assists, newStats.rebounds, newStats.steals, newStats.game_id, newStats.playerId])
+    pool.query(queryText, [Number(newStats.points), Number(newStats.assists), Number(newStats.rebounds), Number(newStats.steals),
+    newStats.game_id, playerId])
         .then((result) => {
             res.sendStatus(200);
         })
         .catch((error) => {
-            console.log(`Error making database query ${sqlText}`, error);
+            console.log(`Error making database query ${queryText}`, error);
             res.sendStatus(500);
         });
 

@@ -26,42 +26,25 @@ function Game({ currentGame }) {
         console.log('Here is the current game properties:', currentGame);
     }
 
-    // TODO move axios.put to the saga. 
-    const updateScores = (event) => {
-        axios.put(`/api/player/${currentGame.id}/${currentGame.game_id}`, {
-            game_id: currentGame.game_id,
-            // this is the player id
-            playerId: currentGame.id,
-            points: points,
-            assists: assists,
-            rebounds: rebounds,
-            steals: steals
-        });
+    // NOT CURRENTLY USING. direct put request above, rather then chaining
+    const submitUpdatedStats = () => {
         dispatch({
-            type: 'FETCH_PLAYER_GAMES'
-        });
+            type: 'UPDATE_STATS',
+            // currentGame is the prop that was passed in. keeping each game_id
+            payload: {
+                game_id: currentGame.game_id,
+                // this is the player id
+                id: currentGame.id,
+                points: points,
+                assists: assists,
+                rebounds: rebounds,
+                steals: steals
+            }
+        })
         // ERROR if you don't have show form toggle off after update of scores!
+        // closes the form after submission
         setShowForm(!showForm);
     }
-
-        //NOT CURRENTLY USING. direct put request above, rather then chaining
-        // const submitUpdatedStats = () => {
-        //     dispatch({
-        //         type: 'UPDATE_STATS',
-        //         // currentGame is the prop that was passed in. keeping each game_id
-        //         payload: {
-        //             game_id: currentGame.game_id,
-        //             // this is the player id
-        //             id: currentGame.id,
-        //             points: points,
-        //             assists: assists,
-        //             rebounds: rebounds,
-        //             steals: steals
-        //         }
-        //     })
-        // }
-        // closes the form after submission
-        
 
     // Each Row: Opponent, Date, Points, Assists, Rebounds, Steals
     // ternary to either update on "update stats" click or read the game stats. 
@@ -86,7 +69,7 @@ function Game({ currentGame }) {
                     value={steals} onChange={(event) => setSteals(event.target.value)}>
                 </input></td>
                 {/* // button to submit the updated scores*/}
-                <td><button type='button' className='update-button' onClick={updateScores}>COMPLETE</button></td>
+                <td><button type='button' className='update-button' onClick={submitUpdatedStats}>COMPLETE</button></td>
             </tr>
             :
             <tr>

@@ -9,8 +9,10 @@ function* fetchUpdatedStats(action) {
             withCredentials: true,
         }
         // player router js needs to have the matching url. ${action.payload}
-        yield axios.put(`/api/player/${action.payload.game_id}`, config);
-        yield put({ type: 'SET_STATS_UPDATE', payload: action.payload });
+        // yield axios.put(`/api/player/${action.payload.game_id}`, config);
+        // yield put({ type: 'SET_STATS_UPDATE', payload: action.payload });
+        yield axios.put(`/api/player/${action.payload.id}`, action.payload, config);
+        yield put({ type: 'FETCH_PLAYER_GAMES' }); 
 
     }
     catch (error) {
