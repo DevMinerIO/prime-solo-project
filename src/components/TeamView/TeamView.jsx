@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import TeamGame from '../TeamGame/TeamGame';
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 
 function TeamView() {
@@ -10,13 +11,15 @@ function TeamView() {
     const myTeam = useSelector((store) => store.teamStats)
     const [heading, setHeading] = useState('THIS SHOULD SHOULD NEVER SHOW!');
     const history = useHistory();
+    const dispatch = useDispatch();
 
     const HandleBackButton = () => {
         history.push('/user')
     }
 
-    console.log('Store teamStats id is:', teamId[0].team_id);
+    console.log('Store teamStats id is:', teamId[0]?.team_id);
     console.log('myTeam is:', myTeam);
+    console.log('THIS IS team ID', teamId);
     const printTeam = (teamId) => {
         switch (teamId) {
             case 1:
@@ -37,7 +40,10 @@ function TeamView() {
     }
 
     useEffect(() => {
-        printTeam(teamId[0].team_id);
+        dispatch({
+            type: 'FETCH_PLAYER_GAMES'
+        });
+        printTeam(teamId[0]?.team_id);
     }, []);
     console.log('Your team is:', heading);
 

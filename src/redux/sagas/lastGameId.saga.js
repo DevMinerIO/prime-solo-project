@@ -9,9 +9,9 @@ function* fetchLastGameId(action) {
             withCredentials: true,
         }
         // player router js needs to have the matching url. 
-        const response = yield axios.get(`/api/player/lastId/${action.payload.teamId}/${action.payload.playerId}`, config);
+        const response = yield axios.get(`/api/player/lastId/${action.payload.teamId}/${action.payload.playerId}`, config)
         console.log('This is response.data for get lastId', response.data);
-        yield put({ type: 'SET_LAST_GAME_ID', payload: response.data });
+        yield put({ type: 'SET_LAST_GAME_ID', payload: response.data});
 
     }
     catch (error) {

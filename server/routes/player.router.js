@@ -18,7 +18,8 @@ router.get('/', (req, res) => {
     ON games.id = player_stats.game_id
     JOIN "player"
     ON player.id = player_stats.player_id
-    WHERE player.user_id = $1;`;
+    WHERE player.user_id = $1
+    ORDER BY games.date;`;
     pool
         .query(queryText, [req.user.id])
         .then((results) => res.send(results.rows))
@@ -35,12 +36,12 @@ router.get('/lastId/:teamId/:playerID', (req, res) => {
     const playerId = req.params.playerID;
     console.log('req.user.id', req.user.id);
     const queryText = `SELECT games.id FROM games 
-    WHERE team_id = ${teamId} AND games.id > (SELECT MAX(player_stats.game_id)
+    WHERE team_id = $1 AND games.id > (SELECT MAX(player_stats.game_id)
     FROM player_stats 
-    WHERE player_stats.player_id = ${playerId}) ORDER BY games.id LIMIT 1;
+    WHERE player_stats.player_id = $2) ORDER BY games.id LIMIT 1;
 `;
     pool
-        .query(queryText)
+        .query(queryText, [teamId, playerId ])
         .then((results) => res.send(results.rows))
         .catch((error) => {
             console.log('Error with User Id in Player router:', error);

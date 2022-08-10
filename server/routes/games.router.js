@@ -39,7 +39,7 @@ router.get('/', (req, res) => {
  * POST route for adding game to "games" table
  */
 router.post('/', (req, res) => {
-    console.log('req.body is: ', req.body);
+    console.log('req.body is in post is: ', req.body);
     const newGame = req.body;
     const queryText = `INSERT INTO "games" (team_id, opponent_name, date, points_for, 
         points_against, outcome)

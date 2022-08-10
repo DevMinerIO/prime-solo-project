@@ -10,7 +10,8 @@ function* setPlayerStats(action) {
         };
         yield axios.post('/api/player', action.payload, config);
         //POST_STATS Links to reducer
-        yield put({ type: 'POST_STATS', payload: action.payload})
+        yield put({ type: 'POST_STATS', payload: action.payload })
+        yield put({ type:'FETCH_PLAYER_GAMES'})
     }
     catch (error) {
         console.log('ERROR with setPlayerStats:', error);

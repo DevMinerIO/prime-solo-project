@@ -44,10 +44,6 @@ function GameStatsForm() {
         setRebounds('');
         setSteals('');
 
-        // reload the page we are about to push to, so new data shows to the DOM
-        dispatch({
-            type: 'FETCH_PLAYER_GAMES'
-        });
         // return to player stats page after the player inputs. 
         history.push('/user');
     }
