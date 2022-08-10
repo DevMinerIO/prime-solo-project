@@ -21,7 +21,7 @@ function ScheduledGame({ game }) {
     return (
         <tr>
             <td>{game.opponent_name}</td>
-            <td>{game.date}</td>
+            <td>{game.to_char}</td>
             <td> {game.points_for}</td>
             <td> {game.points_against}</td>
             <td> {game.outcome}</td>

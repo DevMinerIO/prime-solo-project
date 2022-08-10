@@ -4,7 +4,7 @@ const router = express.Router();
 
 
 router.get('/', (req, res) => {
-    const queryText = `SELECT games.id, games.team_id, games.opponent_name, games.date, games.points_for, games.points_against, games.outcome  FROM games
+    const queryText = `SELECT games.id, games.team_id, games.opponent_name, TO_CHAR(games.date,'MM/DD/YYYY'), games.points_for, games.points_against, games.outcome  FROM games
     JOIN team
     ON team.id = games.team_id
     JOIN player

@@ -54,8 +54,8 @@ function Game({ currentGame }) {
             <tr>
                 <td>{currentGame.game_id}</td>
                 <td>{currentGame.opponent_name}</td>
-                {/* TODO FORMAT DATE PROPERLY */}
-                <td> {currentGame.date}</td>
+                {/* date gets converted into to_char */}
+                <td> {currentGame.to_char}</td>
                 <td><input type='number' className='update-stats' placeholder='POINTS'
                     value={points} onChange={(event) => setPoints(event.target.value)}>
                 </input></td>
@@ -75,8 +75,8 @@ function Game({ currentGame }) {
             <tr>
                 <td>{currentGame.game_id}</td>
                 <td>{currentGame.opponent_name}</td>
-                {/* TODO FORMAT DATE PROPERLY */}
-                <td> {currentGame.date}</td>
+                {/* date gets converted into to_char */}
+                <td> {currentGame.to_char}</td>
                 <td> {currentGame.points}</td>
                 <td> {currentGame.assists}</td>
                 <td> {currentGame.rebounds}</td>
