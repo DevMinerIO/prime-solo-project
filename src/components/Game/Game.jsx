@@ -10,10 +10,10 @@ import axios from 'axios';
 function Game({ currentGame }) {
 
     // local state to keep track of update game stats when clicked. 
-    const [points, setPoints] = useState('');
-    const [assists, setAssists] = useState('');
-    const [rebounds, setRebounds] = useState('');
-    const [steals, setSteals] = useState('');
+    const [points, setPoints] = useState(currentGame.points);
+    const [assists, setAssists] = useState(currentGame.assists);
+    const [rebounds, setRebounds] = useState(currentGame.rebounds);
+    const [steals, setSteals] = useState(currentGame.steals);
 
     // this useState will hide the update form unless clicked. 
     const [showForm, setShowForm] = useState(false);

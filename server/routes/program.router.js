@@ -6,7 +6,10 @@ const router = express.Router();
  * GET route for program stats leader board
  */
 router.get('/', (req, res) => {
-    const queryText = `SELECT team_id, player.last_name, player.jersey_number,  AVG(points) AS "avg_points", AVG(assists) AS "avg_assists", AVG(rebounds) AS "avg_rebounds", AVG(steals) AS "avg_steals" FROM player
+    const queryText = `SELECT team_id, player.last_name, player.jersey_number,  TO_CHAR(AVG(points),'fm99D00') AS "avg_points",
+    TO_CHAR(AVG(assists),'fm99D00') AS "avg_assists", TO_CHAR(AVG(rebounds),'fm99D00') AS "avg_rebounds",
+    TO_CHAR(AVG(steals),'fm99D00') AS "avg_steals"
+    FROM player
     JOIN player_stats
     ON player.id = player_stats.player_id
     GROUP BY player.id
