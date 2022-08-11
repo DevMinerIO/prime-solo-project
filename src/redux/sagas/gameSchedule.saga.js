@@ -12,6 +12,12 @@ function* fetchGameSchedule() {
         const response = yield axios.get(`/api/games`, config);
         yield console.log('This is response.data when trying to get team_id', response.data);
         yield put({ type: 'GET_GAME_SCHEDULE', payload: response.data });
+        yield put({
+            type: 'FETCH_TEAM_STATS', payload: {
+                // this is the users team
+                teamId: response.data[0].team_id
+            }
+        })
 
     }
     catch (error) {
