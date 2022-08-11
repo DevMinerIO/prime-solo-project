@@ -54,7 +54,7 @@ function TeamView() {
             <table>
                 <thead>
                     <tr>
-                        <th>Opponent</th>
+                        <th>First Name</th>
                         <th>Last Name</th>
                         <th>Jersey #</th>
                         <th>Points</th>

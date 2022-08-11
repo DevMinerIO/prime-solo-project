@@ -49,18 +49,23 @@ router.get('/lastId/:teamId/:playerID', (req, res) => {
         });
 });
 
+// TO_CHAR(AVG(points), 'fm99D00') AS "avg_points",
+//     TO_CHAR(AVG(assists), 'fm99D00') AS "avg_assists", TO_CHAR(AVG(rebounds), 'fm99D00') AS "avg_rebounds",
+//         TO_CHAR(AVG(steals), 'fm99D00') AS "avg_steals"
 router.get('/team/:teamId', (req, res) => {
     const teamId = Number(req.params.teamId);
     console.log('team id in /team/:teamId is:', teamId);
-    const queryText = `SELECT player.first_name, player.last_name,player.jersey_number,
-    games.opponent_name, points, assists, rebounds, steals
+    const queryText = `SELECT player.id, player.first_name, player.last_name,player.jersey_number,
+    TO_CHAR(AVG(points), 'fm99D00') AS "avg_points", TO_CHAR(AVG(assists), 'fm99D00') AS "avg_assists", TO_CHAR(AVG(rebounds),
+    'fm99D00') AS "avg_rebounds", TO_CHAR(AVG(steals), 'fm99D00') AS "avg_steals"
     FROM player_stats
     JOIN games
     ON games.id = player_stats.game_id
     JOIN player
     ON player.id = player_stats.player_id
     WHERE player.team_id = $1
-    ORDER BY game_id;`;
+    GROUP BY player.id
+    ORDER BY avg_points DESC;`;
     pool
         .query(queryText, [teamId])
         .then((results) => res.send(results.rows))
