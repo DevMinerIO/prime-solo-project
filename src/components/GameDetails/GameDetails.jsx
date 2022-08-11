@@ -3,20 +3,27 @@ import { useDispatch } from "react-redux";
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 
-function GameDetails({ individualStats }) {
+
+function GameDetails() {
+    const gameDetails = useSelector((store) => store.teamStats);
+
 
 
     return (
-        <tr className='accordion-stats-row'>
-            <td> {individualStats.jersey_number}</td>
-            <td>{individualStats.first_name}</td>
-            <td>{individualStats.last_name}</td>
-            <td> {individualStats.points}</td>
-            <td> {individualStats.assists}</td>
-            <td> {individualStats.rebounds}</td>
-            <td> {individualStats.steals}</td>
-        </tr>
-    );
+        gameDetails?.map((stats, i) => {
+        return(
+        <tr key={i} className='accordion-stats-row'>
+            <td> {gameDetails[i].jersey_number}</td>
+                <td>{gameDetails[i].first_name}</td>
+                <td>{gameDetails[i].last_name}</td>
+                <td> {gameDetails[i].points}</td>
+                <td> {gameDetails[i].assists}</td>
+                <td> {gameDetails[i].rebounds}</td>
+                <td> {gameDetails[i].steals}</td>
+            </tr>
+        )
+        }
+    ));
 }
 
 
