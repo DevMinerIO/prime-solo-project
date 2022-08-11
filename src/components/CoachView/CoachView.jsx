@@ -36,6 +36,7 @@ function CoachView() {
     // function to take you to addGameStats form. 
     const addGame = () => {
         setShowForm(!showForm);
+        console.log('teamSchedule is:', teamSchedule);
     }
     const submitGame = (event) => {
 

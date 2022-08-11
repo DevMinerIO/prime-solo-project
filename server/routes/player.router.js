@@ -6,7 +6,7 @@ const {
 } = require('../modules/authentication-middleware');
 
 /**
- * GET route template
+ * Default get route on players side on login. Will show individual player_stats
  */
 router.get('/', (req, res) => {
     // GET route code here
@@ -30,6 +30,7 @@ router.get('/', (req, res) => {
 });
 
 // GET FOR LAST GAME ID /lastId
+// Needed for the player to be able to add new game. Where game id for their team is larger then their current max game_id
 router.get('/lastId/:teamId/:playerID', (req, res) => {
     // GET route code here
     const teamId = req.params.teamId;
@@ -49,9 +50,7 @@ router.get('/lastId/:teamId/:playerID', (req, res) => {
         });
 });
 
-// TO_CHAR(AVG(points), 'fm99D00') AS "avg_points",
-//     TO_CHAR(AVG(assists), 'fm99D00') AS "avg_assists", TO_CHAR(AVG(rebounds), 'fm99D00') AS "avg_rebounds",
-//         TO_CHAR(AVG(steals), 'fm99D00') AS "avg_steals"
+// Get all players stats for the team stats table in player view. 
 router.get('/team/:teamId', (req, res) => {
     const teamId = Number(req.params.teamId);
     console.log('team id in /team/:teamId is:', teamId);
@@ -74,10 +73,28 @@ router.get('/team/:teamId', (req, res) => {
             res.sendStatus(500);
         });
 }) 
+// get router for accordion table in coach-view
+router.get('/:gameId/:teamId', (req, res) => {
+    const teamId = req.params.teamId;
+    const gameId = req.params.gameId;
+    const queryText = `SELECt player.jersey_number, player.first_name, player.last_name, points, assists, rebounds, steals
+    FROM player
+    JOIN player_stats
+    ON player.id = player_stats.player_id
+    WHERE team_id = $1 AND game_id = $2
+    ORDER BY points DESC;`
+    pool
+        .query(queryText, [teamId, gameId])
+        .then((results) => res.send(results.rows))
+        .catch((error) => {
+            console.log('Error GETing TEAM Stats in Player router /team/:teamId', error);
+            res.sendStatus(500);
+        });
+})
 
 
 /**
- * POST route template
+ * POST route for adding new player_stats from player view
  */
 router.post('/', (req, res) => {
     // POST route code here
@@ -96,7 +113,7 @@ router.post('/', (req, res) => {
 
 });
 
-// TODO- ADD PUT to update scores
+// TODO- ADD PUT to update scores on player-view side
 router.put('/:playerId', (req, res) => {
     const newStats = req.body;
     const playerId = req.params.playerId;
