@@ -11,6 +11,7 @@ function* fetchTeamGameDetails(action) {
         const response = yield axios.get(`/api/player/${action.payload.gameId}/${action.payload.teamId}`, config);
         console.log('this is response for fetchTeamGameDetails:', response.data);
         yield put({ type: 'SET_GAME_DETAILS', payload: response.data });
+        yield put({ type: 'FETCH_SCHEDULE' })
     }
     catch(error) {
         console.log('error in fetchTeamGameDetails in teamStats saga:', error);
@@ -26,6 +27,7 @@ function* fetchTeamStats(action) {
         const response = yield axios.get(`/api/player/team/${action.payload.teamId}`, config);
         console.log('This is response.data for TEAM:', response.data);
         yield put({ type: 'GET_TEAM_STATS', payload: response.data });
+        
 
     }
     catch (error) {

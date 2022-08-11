@@ -32,6 +32,7 @@ function* setGameSchedule(action) {
         }
         yield axios.post('/api/games', action.payload, config);
         yield put({ type: 'FETCH_SCHEDULE' })
+        
     } catch (error) {
         console.log(' Failed in setGameSchedule post request failed', error);
     }
