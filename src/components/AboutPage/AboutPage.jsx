@@ -8,8 +8,17 @@ import React from 'react';
 function AboutPage() {
   return (
     <div className="container">
-      <div>
-        <p>This about page is for anyone to read!</p>
+      <div className='about-me'>
+        <p>Thank you everyone for listening to my presentation. Connect with me on Linkedin </p>
+        <br />
+        <p>Implementing next: Twillo, reset button for coaches to reset player stats</p>
+        <br /> 
+        <p>Tech used: PERN Stack (postgres, Express, React, Node)</p>
+        <br />
+        <p>Hardest Part: SQL</p>
+        <br />
+        <p>THANK YOU!</p>
+
       </div>
     </div>
   );

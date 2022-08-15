@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import TeamGame from '../TeamGame/TeamGame';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import TableNav from '../TableNav/TableNav';
 
 
 function TeamView() {
@@ -49,30 +50,33 @@ function TeamView() {
 
 
     return (
-        <div>
-            <h2>Team Stats For: {heading}</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Jersey #</th>
-                        <th>Points</th>
-                        <th>Assists</th>
-                        <th>Rebounds</th>
-                        <th>Steals</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {myTeam?.map((game, i) => {
-                        return (
-                            <TeamGame key={i} currentTeamGame={game} />
-                        )
-                    })}
-                </tbody>
-            </table>
-            <button onClick={HandleBackButton}>back To Your Stats</button>
-        </div>
+        <>
+            <h2>Team Stats</h2>
+            <div className='table-container'>
+                <TableNav className='table-nav' />
+                <table>
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Jersey #</th>
+                            <th>AvgPoints</th>
+                            <th>AvgAssists</th>
+                            <th>AvgRebounds</th>
+                            <th>AvgSteals</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {myTeam?.map((game, i) => {
+                            return (
+                                <TeamGame key={i} currentTeamGame={game} />
+                            )
+                        })}
+                    </tbody>
+                </table>
+                <button className='btn-back' onClick={HandleBackButton}>back To Your Stats</button>
+            </div>
+        </>
     );
 }
 

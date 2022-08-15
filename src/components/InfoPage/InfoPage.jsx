@@ -8,7 +8,10 @@ import React from 'react';
 function InfoPage() {
   return (
     <div className="container">
-      <p>Info Page</p>
+      <p>Absolutely I could have deleted this page but then you would not have been
+        able to see my sweet hovering css effects. 
+      </p>
+      <p>Also thank you Kyle</p>
     </div>
   );
 }

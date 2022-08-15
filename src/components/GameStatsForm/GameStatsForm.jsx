@@ -25,10 +25,6 @@ function GameStatsForm() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        console.log('everything from playerStats store', everything);
-        console.log('THIS IS getTeam from the store,', getTeam);
-        console.log('NEXT GAME ID IS:', nextGameId);
-
         dispatch({
             // not using game_id for now. making new game number from sql query
             //game_id: newGame,
@@ -48,6 +44,8 @@ function GameStatsForm() {
         history.push('/user');
     }
     return (
+        <>
+        <h2>ADD NEW GAME STATS</h2>
             <form className='game-stats-form' onSubmit={handleSubmit}>
                 <label>points</label>
                 <input type="number" value={points}
@@ -63,9 +61,8 @@ function GameStatsForm() {
                     onChange={(event) => setSteals(event.target.value)} />
                 <button type='submit'>SUBMIT SCORES</button>
             </form>
+        </>
     )
-
-
 
 }
 

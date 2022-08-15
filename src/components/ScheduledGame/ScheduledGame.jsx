@@ -39,7 +39,7 @@ function ScheduledGame({ game }) {
                     <td> {game.points_for}</td>
                     <td> {game.points_against}</td>
                     <td> {game.outcome}</td>
-                    <td><button onClick={(event) => handleDelete(game)}>Delete Game</button></td>
+                    <td><button class="btn-delete" onClick={(event) => handleDelete(game)}>Delete Game</button></td>
                 </tr>
             </>
             :
@@ -50,7 +50,7 @@ function ScheduledGame({ game }) {
                     <td> {game.points_for}</td>
                     <td> {game.points_against}</td>
                     <td> {game.outcome}</td>
-                    <td><button onClick={(event) => handleDelete(game)}>Delete Game</button></td>
+                    <td><button class="btn-delete" onClick={(event) => handleDelete(game)}>Delete Game</button></td>
                 </tr>
                 
                     <thead>

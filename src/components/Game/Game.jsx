@@ -52,7 +52,6 @@ function Game({ currentGame }) {
         showForm === true ?
 
             <tr>
-                <td>{currentGame.game_id}</td>
                 <td>{currentGame.opponent_name}</td>
                 {/* date gets converted into to_char */}
                 <td> {currentGame.to_char}</td>
@@ -73,7 +72,6 @@ function Game({ currentGame }) {
             </tr>
             :
             <tr>
-                <td>{currentGame.game_id}</td>
                 <td>{currentGame.opponent_name}</td>
                 {/* date gets converted into to_char */}
                 <td> {currentGame.to_char}</td>
@@ -82,7 +80,7 @@ function Game({ currentGame }) {
                 <td> {currentGame.rebounds}</td>
                 <td> {currentGame.steals}</td>
                 {/* // button to update the scores for the current game being clicked on */}
-                <td><button type='button' className='update-button' onClick={updatePlayerStats}>UPDATE STATS</button></td>
+                <td><button type='button' className='btn-update' onClick={updatePlayerStats}>UPDATE STATS</button></td>
             </tr>
     );
 }
