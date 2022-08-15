@@ -16,10 +16,10 @@ function GameDetails() {
             <td> {gameDetails[i].jersey_number}</td>
                 <td>{gameDetails[i].first_name}</td>
                 <td>{gameDetails[i].last_name}</td>
-                <td> {gameDetails[i].points}</td>
-                <td> {gameDetails[i].assists}</td>
-                <td> {gameDetails[i].rebounds}</td>
-                <td> {gameDetails[i].steals}</td>
+                <td> {gameDetails[i].avg_points}</td>
+                <td> {gameDetails[i].avg_assists}</td>
+                <td> {gameDetails[i].avg_rebounds}</td>
+                <td> {gameDetails[i].avg_steals}</td>
             </tr>
         )
         }

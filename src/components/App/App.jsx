@@ -61,7 +61,7 @@ function App() {
             exact
             path="/user"
           > 
-            <UserPage />
+            {/* <UserPage /> */}
             {user.access_level < 2 ?
               <PlayerPage />
               :
@@ -143,7 +143,7 @@ function App() {
             <h1>404</h1>
           </Route>
         </Switch>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </Router>
   );

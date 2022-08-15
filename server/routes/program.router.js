@@ -6,7 +6,7 @@ const router = express.Router();
  * GET route for program stats leader board
  */
 router.get('/', (req, res) => {
-    const queryText = `SELECT team_id, player.last_name, player.jersey_number,  TO_CHAR(AVG(points),'fm99D00') AS "avg_points",
+    const queryText = `SELECT team_id, player.last_name, player.jersey_number,  ROUND(AVG(points),2) AS "avg_points",
     TO_CHAR(AVG(assists),'fm99D00') AS "avg_assists", TO_CHAR(AVG(rebounds),'fm99D00') AS "avg_rebounds",
     TO_CHAR(AVG(steals),'fm99D00') AS "avg_steals"
     FROM player
