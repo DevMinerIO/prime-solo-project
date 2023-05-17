@@ -25,7 +25,7 @@ The npm run client command will open up a new browser tab for you!
 ## Usage
 How does someone use this application?
 
-1.Login to already setup user accounts. For the player view User: tiny Password:1234 ... or for coaches view User: coachNorton Password: 1234
+1. Login to already setup user accounts. For the player view User: tiny Password:1234 ... or for coaches view User: coachNorton Password: 1234
 2. If in player view, you will have the ability to see player stats, and edit your own stats. 
 3. If in coaches View you will have the ability to add or remove games to the schedule, along with both viewing and editing player stats. 
 ## Built With
