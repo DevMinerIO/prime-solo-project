@@ -31,13 +31,12 @@ How does someone use this application?
 ## Built With
 
 List technologies and frameworks here
-
-React
-Redux
-Redux-Sagas
-Express
-Passport
-PostgreSQL
+- [React](https://reactjs.org/)
+- [Redux](https://maven.apache.org/)
+- [Redux-Sagas](https://redux-saga.js.org/)
+- [Express](https://expressjs.com/)
+- [Passport](http://www.passportjs.org/)
+- [PostgreSQL](https://www.postgresql.org/)
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
